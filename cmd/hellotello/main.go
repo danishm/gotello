@@ -7,29 +7,6 @@ import (
 	"time"
 )
 
-// State represents the state of the Tello, it's expected to be in the following format e.g.
-// "pitch:0;roll:0;yaw:0;vgx:0;vgy:0;vgz:0;templ:89;temph:91;tof:10;h:0;bat:3;baro:48.26;time:0;agx:0.00;agy:-6.00;agz:-1003.00;"
-//
-// Source: file:///Users/danish/Downloads/Tello%20SDK%20Documentation%20EN_1.3_1122.pdf
-type State struct {
-	Pitch              int
-	Roll               int
-	Yaw                int
-	VGX                int
-	VGY                int
-	VGZ                int
-	LowestTemperature  int
-	HighestTemperature int
-	TOF                int
-	Height             int
-	Battery            int
-	Barometer          float64
-	MotorsOnTime       int
-	AGX                float64
-	AGY                float64
-	AGZ                float64
-}
-
 func main() {
 
 	time.Sleep(2 * time.Second)
