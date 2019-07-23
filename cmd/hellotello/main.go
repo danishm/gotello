@@ -2,6 +2,7 @@ package main
 
 import (
 	//"bufio"
+	// "bufio"
 	"fmt"
 	"net"
 	"time"
@@ -12,16 +13,21 @@ func main() {
 	time.Sleep(2 * time.Second)
 	// Send a Command
 	send("command", "192.168.10.1:8889")
-	send("remark2", "192.168.10.1:8890")
+	time.Sleep(2 * time.Second)
+	send("takeoff", "192.168.10.1:8889")
+	time.Sleep(5 * time.Second)
+	send("cw 90", "192.168.10.1:8889")
+	time.Sleep(5 * time.Second)
+	send("land", "192.168.10.1:8889")
 
 	// Start UDP listner
-	listner()
+	// listner()
 
 }
 
 func send(cmd string, addr string) {
-	fmt.Printf("Sending CMD [%s] ...", cmd)
-	//p := make([]byte, 2048)
+	fmt.Printf("Sending CMD [%s] ...\n", cmd)
+	// p := make([]byte, 2048)
 	conn, err := net.Dial("udp", addr)
 	if err != nil {
 		fmt.Printf("Some error %v", err)
@@ -39,7 +45,7 @@ func send(cmd string, addr string) {
 	// }
 	conn.Close()
 
-	fmt.Printf("cmd [%s] sent", cmd)
+	fmt.Printf("cmd [%s] sent\n", cmd)
 }
 
 func listner() {
